@@ -13,7 +13,8 @@ class _HomeScreenState extends State<HomeScreen> {
         slivers: [
           SliverAppBar(
             forceElevated: true,
-            floating: true,
+            //floating: true,
+            pinned: true,
             expandedHeight: 100.0,
             leading: IconButton(
               icon: Icon(Icons.settings),
@@ -32,7 +33,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 iconSize: 30.0,
               ),
             ],
-          )
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return Container(
+                  margin: EdgeInsets.all(10.0),
+                  height: 100.0,
+                  color: Colors.red,
+                );
+              },
+              childCount: 10,
+            ),
+          ),
         ],
       ),
     );
