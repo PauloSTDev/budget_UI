@@ -31,12 +31,12 @@ class BarChart extends StatelessWidget {
             IconButton(
               onPressed: () {},
               icon: Icon(Icons.arrow_back),
-              iconSize: 20.0,
+              iconSize: 30.0,
             ),
             Text(
               "Nov 10, 2019 - Nov 16, 2019",
               style: TextStyle(
-                fontSize: 18.0,
+                fontSize: 15.0,
                 fontWeight: FontWeight.w600,
                 letterSpacing: 1.2,
               ),
@@ -44,7 +44,7 @@ class BarChart extends StatelessWidget {
             IconButton(
               onPressed: () {},
               icon: Icon(Icons.arrow_forward),
-              iconSize: 20.0,
+              iconSize: 30.0,
             ),
           ],
         ),
@@ -52,10 +52,43 @@ class BarChart extends StatelessWidget {
           height: 30.0,
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            //Widget própria para realizar build e apresentação do gráfico de gastos
             Bar(
               label: "Su",
               amountSpent: expenses[0],
+              mostExpensive: mostExpensive,
+            ),
+            Bar(
+              label: "Mo",
+              amountSpent: expenses[1],
+              mostExpensive: mostExpensive,
+            ),
+            Bar(
+              label: "Tu",
+              amountSpent: expenses[2],
+              mostExpensive: mostExpensive,
+            ),
+            Bar(
+              label: "We",
+              amountSpent: expenses[3],
+              mostExpensive: mostExpensive,
+            ),
+            Bar(
+              label: "Th",
+              amountSpent: expenses[4],
+              mostExpensive: mostExpensive,
+            ),
+            Bar(
+              label: "Fr",
+              amountSpent: expenses[5],
+              mostExpensive: mostExpensive,
+            ),
+            Bar(
+              label: "Sa",
+              amountSpent: expenses[6],
               mostExpensive: mostExpensive,
             ),
           ],
@@ -65,7 +98,7 @@ class BarChart extends StatelessWidget {
   }
 }
 
-
+//Widget própria para realizar build e apresentação do gráfico de gastos
 class Bar extends StatelessWidget {
   final String label;
   final double amountSpent;
