@@ -41,7 +41,6 @@ class _HomeScreenState extends State<HomeScreen> {
               (BuildContext context, int index) {
                 return Container(
                   margin: EdgeInsets.all(10.0),
-                  height: 100.0,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: [
