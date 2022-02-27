@@ -13,10 +13,72 @@ class _HomeScreenState extends State<HomeScreen> {
   //Build para apresentar as categorias e os gastos
   _buildCategory(Category, double totalAmountSpent) {
     return Container(
+      padding: EdgeInsets.all(20.0),
       margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
       height: 100.0,
       width: double.infinity,
-      color: Colors.red,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            offset: Offset(0, 2),
+            blurRadius: 6.0,
+          ),
+        ],
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                Category.name,
+                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+              ),
+              Text(
+                "\$${(Category.maxAmount - totalAmountSpent).toStringAsFixed(2)} / \$${(Category.maxAmount).toStringAsFixed(2)}",
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),
+              ),
+            ],
+          ),
+          SizedBox(height: 10.0),
+          LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints){
+              final double maxBarWidth = constraints.maxWidth;
+              final double percent = (Category.maxAmount - totalAmountSpent) / Category.maxAmount;
+              double barWidth = percent * maxBarWidth;
+
+              if (barWidth < 0){
+                barWidth = 0;
+              }
+
+
+              return Stack(
+                children: [
+                  Container(
+                    height: 20.0,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                  ),
+                  Container(
+                    height: 20.0,
+                    width: barWidth,
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(15.0),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -73,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   category.expenses.forEach((Expense expense) {
                     totalAmountSpent += expense.cost;
                   });
+                  //Build para apresentar as categorias e os gastos
                   return _buildCategory(category, totalAmountSpent);
                 }
               },
