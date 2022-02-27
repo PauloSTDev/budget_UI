@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_budget_ui/data/data.dart';
+import 'package:flutter_budget_ui/helpers/color_helper.dart';
 import 'package:flutter_budget_ui/models/category_model.dart';
 import 'package:flutter_budget_ui/models/expense_model.dart';
 import 'package:flutter_budget_ui/widgets/bar_chart.dart';
@@ -69,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 20.0,
                     width: barWidth,
                     decoration: BoxDecoration(
-                      color: Colors.red,
+                      color: getColor(context, percent),
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                   ),
