@@ -25,6 +25,7 @@ class RadialPainter extends CustomPainter {
 
     Offset center = Offset(size.width / 2, size.height /2);
     double radius = min(size.width / 2, size.height /2);
+    canvas.drawCircle(center, radius, bgLine);
   }
 
   @override

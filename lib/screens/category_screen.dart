@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_budget_ui/helpers/color_helper.dart';
 import 'package:flutter_budget_ui/models/category_model.dart';
 import 'package:flutter_budget_ui/models/expense_model.dart';
+import 'package:flutter_budget_ui/widgets/radial_painter.dart';
 
 class CategoryScreen extends StatefulWidget {
   final Category category;
 
   CategoryScreen({this.category});
-
 
   @override
   _CategoryScreenState createState() => _CategoryScreenState();
@@ -25,9 +26,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.category.name),
-        backgroundColor: Theme
-            .of(context)
-            .primaryColor,
+        backgroundColor: Theme.of(context).primaryColor,
         actions: [
           IconButton(
             color: Colors.white,
@@ -63,10 +62,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
                   ),
                 ],
               ),
-              child: Center(
-                child: Text(
-                  "\$${amountLeft.toStringAsFixed(2)} / \$${widget.category.maxAmount.toStringAsFixed(2)}",
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+              child: CustomPaint(
+                foregroundPainter: RadialPainter(
+                  bgColor: Colors.grey[200],
+                  lineColor: getColor(context, percent),
+                  percent: percent,
+                  width: 15.0,
+                ),
+                child: Center(
+                  child: Text(
+                    "\$${amountLeft.toStringAsFixed(2)} / \$${widget.category.maxAmount.toStringAsFixed(2)}",
+                    style:
+                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+                  ),
                 ),
               ),
             ),
