@@ -4,6 +4,7 @@ import 'package:flutter_budget_ui/models/expense_model.dart';
 
 class CategoryScreen extends StatefulWidget {
   final Category category;
+
   CategoryScreen({this.category});
 
 
@@ -22,9 +23,11 @@ class _CategoryScreenState extends State<CategoryScreen> {
     final double percent = amountLeft / widget.category.maxAmount;
 
     return Scaffold(
-      appBar:AppBar(
+      appBar: AppBar(
         title: Text(widget.category.name),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Theme
+            .of(context)
+            .primaryColor,
         actions: [
           IconButton(
             color: Colors.white,
@@ -61,7 +64,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 ],
               ),
               child: Center(
-                child: Text("\$${amountLeft.toStringAsFixed(2)} / \$${widget.category.maxAmount.toStringAsFixed(2)}"),
+                child: Text(
+                  "\$${amountLeft.toStringAsFixed(2)} / \$${widget.category.maxAmount.toStringAsFixed(2)}",
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+                ),
               ),
             ),
           ],
