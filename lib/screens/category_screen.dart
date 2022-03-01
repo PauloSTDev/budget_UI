@@ -33,6 +33,29 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ),
           ],
         ),
+        child: Padding(
+          padding: EdgeInsets.all(30.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                expense.name,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                ),
+              ),
+              Text(
+                "-\$${expense.cost.toStringAsFixed(2)}",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 20.0,
+                ),
+              ),
+            ],
+          ),
+        ),
       ));
     });
     return Column(
