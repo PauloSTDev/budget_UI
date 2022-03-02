@@ -39,13 +39,19 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
-                  Category.name,
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w600),
+                Expanded(
+                  child: Text(
+                    Category.name,
+                    style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w600),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
-                Text(
-                  "\$${(Category.maxAmount - totalAmountSpent).toStringAsFixed(2)} / \$${(Category.maxAmount).toStringAsFixed(2)}",
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0),
+                Expanded(
+                  child: Text(
+                    "\$${(Category.maxAmount - totalAmountSpent).toStringAsFixed(2)} / \$${(Category.maxAmount).toStringAsFixed(2)}",
+                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.0),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ],
             ),
